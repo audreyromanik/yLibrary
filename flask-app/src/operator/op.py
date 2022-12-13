@@ -22,7 +22,7 @@ def get_op():
 @op_blueprint.route('/activity', methods=['GET'])
 def get_activity():
     cursor = db.get_db().cursor()
-    query = 'SELECT download.acct_num, download.isbn, date_down, date_up, date_edit FROM download JOIN upload_edit ON download.isbn = upload_edit.isbn ORDER BY date_edit DESC'
+    query = 'SELECT acct_num, isbn, date_up, date_edit FROM  upload_edit ORDER BY date_edit DESC'
     cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -35,4 +35,17 @@ def get_activity():
     return the_response
 
 
-
+@op_blueprint.route('/activity1', methods=['GET'])
+def get_activity1():
+    cursor = db.get_db().cursor()
+    query = 'SELECT acct_num, isbn, date_down FROM download ORDER BY date_down DESC'
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
