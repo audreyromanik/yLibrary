@@ -2,15 +2,13 @@ from flask import Blueprint, request, jsonify, make_response
 import json
 from src import db
 
+op_blueprint = Blueprint('op_blueprint', __name__)
 
-customers = Blueprint('customers', __name__)
-
-# Get all customers from the DB
-@customers.route('/customers', methods=['GET'])
-def get_customers():
+@op_blueprint.route('/operator', methods=['GET'])
+def get_op():
     cursor = db.get_db().cursor()
-    cursor.execute('select customerNumber, customerName,\
-        creditLimit from customers')
+    query = 'SELECT op_id as value, op_name as label FROM operator'
+    cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -21,11 +19,11 @@ def get_customers():
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get customer detail for customer with particular userID
-@customers.route('/customers/<userID>', methods=['GET'])
-def get_customer(userID):
+@op_blueprint.route('/activity', methods=['GET'])
+def get_activity():
     cursor = db.get_db().cursor()
-    cursor.execute('select * from customers where customerNumber = {0}'.format(userID))
+    query = 'SELECT download.acct_num, download.isbn, date_down, date_up, date_edit FROM download JOIN upload_edit ON download.isbn = upload_edit.isbn ORDER BY date_edit DESC'
+    cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -35,3 +33,6 @@ def get_customer(userID):
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
+
+
