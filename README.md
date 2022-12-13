@@ -41,8 +41,8 @@ access to academic works, as well as other novels or articles to broaden ones wo
   8. Once in the 'Edit_upload' page, there is a form where you can input an image URL for the file and/or change its description
   9. When done click submit, to see results repeat steps 2 and 3 and make sure you are on the 'Search_result' page
   10.You can also click the tab at the top to move to the 'Operator_functions' page
-  11. This page will show results of edits and downloads of files, stating the isbn when it was edited/downloaded and by which account number
-  *note the time in the download section will be listed as 00:00:00 because only the date is recorded
+  11. This page will show results of edits and downloads of files, stating the isbn when it was edited/downloaded and by which account number  
+  *note the time in the download section will be listed as 00:00:00 because only the date is recorded*
   
   
 
