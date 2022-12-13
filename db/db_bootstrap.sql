@@ -39,13 +39,13 @@ DROP TABLE IF EXISTS file_info;
 CREATE TABLE file_info
 (
     isbn         VARCHAR(17) PRIMARY KEY,
-    first_name   VARCHAR(20) NOT NULL,
-    last_name    VARCHAR(20) NOT NULL,
+    first_name   VARCHAR(20)  NOT NULL,
+    last_name    VARCHAR(20)  NOT NULL,
     title        VARCHAR(100) NOT NULL,
     lang         VARCHAR(20),
     image        VARCHAR(10000),
     descriptions VARCHAR(500),
-    text_type    BOOL        NOT NULL, -- is it a book? false(0) = article, true(1) = book
+    text_type    BOOL         NOT NULL, -- is it a book? false(0) = article, true(1) = book
     op_id        VARCHAR(10) DEFAULT 1,
     CONSTRAINT fk_1
         FOREIGN KEY (op_id) REFERENCES operator (op_id)
@@ -91,16 +91,15 @@ VALUES ('754913225-9', 'Tallulah', 'Pimlock', 'No Time for Love', 'Aymara',
         true, 3),
        ('643054475-3', 'Peadar', 'Lauks', 'Lupin III: Sweet Lost Night', 'Chinese',
         'Cras pellentesque volutpat dui.', false, 1),
+       ('460769331-6', 'Mark', 'Fontenot', 'How to database', 'English',
+        'Lets learn about databases! They can be cool.', true, 6),
        ('865571247-7', 'Kimbell', 'Gaggen', 'Bronson', 'Georgian',
         'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien.',
         false, 2);
 
 INSERT INTO file_info
 (isbn, first_name, last_name, title, lang, image, descriptions, text_type, op_id)
-VALUES ('460769331-6', 'Mark', 'Fontenot', 'How to database', 'English',
-        'https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2019/07/image2-1.png?fit=600%2C315&ssl=1',
-        'Lets learn about databases! They can be cool.', true, 6),
-       ('123145678-9', 'Mark', 'Fonno', 'How to Deesign', 'Spanish',
+VALUES ('123145678-9', 'Mark', 'Fonno', 'How to Deesign', 'Spanish',
         'https://w7.pngwing.com/pngs/724/446/png-transparent-design-words-graphic-designer-designers-english-floating-web-design-free-logo-design-template.png',
         'Forget about databases, lets Design APPPPS! So Much more fun!', true, 6);
 

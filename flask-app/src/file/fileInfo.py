@@ -88,13 +88,12 @@ def edit_file(num):
     return "Success!"
 
 @fileInfo_blueprint.route('/editImage/<num>', methods=['POST'])
-def edit_fileImage(num):
+def edit_file_image(num):
     current_app.logger.info(request.form)
     cursor = db.get_db().cursor()
     image = request.form['image']
     query = f'UPDATE file_info SET image = \"{image}\" WHERE isbn = %s'
-    arg = num
-    cursor.execute(query, arg)
+    cursor.execute(query, num)
     db.get_db().commit()
     return "Success!"
 
