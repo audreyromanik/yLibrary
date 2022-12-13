@@ -28,8 +28,12 @@ access to academic works, as well as other novels or articles to broaden ones wo
   11. You can then deploy the App through Appsmith
 
 ## Instuctions for demo use of yLibrary
-**Note** - The containers should already be running and a new ngrok link should be implemented in Appsmith
+**Note** - The containers should already be running and a new ngrok link should be implemented in Appsmith  
 **Note2** - The video submitted for class also does this demo
+
+**Note3** - The 'Search_result' and 'Edit_upload' page should only be navigated to as described, clicking on the tab without searching 
+for a file will not lead to any results or functions  
+**Note4** - if you click the 'logo' icon on the top left of any page it will navigate you to the 'Home_search' page
 
   1. Deply the app and start on the 'Home_search' page
   2. Click the search bar and type 'how' or 'to' -> must search a title or part of a title for results to show
