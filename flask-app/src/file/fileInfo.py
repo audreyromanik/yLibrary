@@ -112,7 +112,7 @@ def edit_file_date(num):
 @fileInfo_blueprint.route('/file_type/<num>', methods=['GET'])
 def get_file_type(num):
     cursor = db.get_db().cursor()
-    sql = 'SELECT file_type FROM file_type where isbn = %s'
+    sql = 'SELECT fileType FROM file_type where isbn = %s'
     arg = num
     cursor.execute(sql, arg)
     row_headers = [x[0] for x in cursor.description]
