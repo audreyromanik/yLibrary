@@ -4,6 +4,9 @@ This repo contains the setup for spinning 2 docker containers:
   1. A MySQL 8 container, for creation and use of a database
   2. A Python Flask container to implement the rest API
 
+This repo also has the setup of the yLibrary database, with its initial values, and all the GET and POST requests needed to run 
+the app.
+
 yLibrary? is a project created for CS3200-Database Design, that works to emulate and preserve the memory of Z-Library.
 
 yLibrary? is an online database where books, articles and papers are collected for free online use. 
