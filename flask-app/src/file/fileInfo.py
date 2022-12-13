@@ -76,6 +76,16 @@ def add_download():
     db.get_db().commit()
     return "Success!"
 
+@fileInfo_blueprint.route('/editImage/<num>', methods=['POST'])
+def edit_file_image(num):
+    current_app.logger.info(request.form)
+    cursor = db.get_db().cursor()
+    image = request.form['image']
+    query = f'UPDATE file_info SET image = \"{image}\" WHERE isbn = %s'
+    cursor.execute(query, num)
+    db.get_db().commit()
+    return "Success!"
+
 @fileInfo_blueprint.route('/editDescription/<num>', methods=['POST'])
 def edit_file(num):
     current_app.logger.info(request.form)
@@ -84,16 +94,6 @@ def edit_file(num):
     query = f'UPDATE file_info SET descriptions = \"{descriptions}\" WHERE isbn = %s'
     arg = num
     cursor.execute(query, arg)
-    db.get_db().commit()
-    return "Success!"
-
-@fileInfo_blueprint.route('/editImage/<num>', methods=['POST'])
-def edit_file_image(num):
-    current_app.logger.info(request.form)
-    cursor = db.get_db().cursor()
-    image = request.form['image']
-    query = f'UPDATE file_info SET image = \"{image}\" WHERE isbn = %s'
-    cursor.execute(query, num)
     db.get_db().commit()
     return "Success!"
 
